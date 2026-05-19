@@ -13,7 +13,7 @@ program
   .parse(process.argv);
 
 const options = program.opts();
-const ignoreEndpoints = options.ignoreEndpoints;
+const ignoreEndpoints = options.ignoreEndpoints ?? [];
 
 const myEngine = new QueryEngine();
 
@@ -76,7 +76,7 @@ exec(getCurrentCommitSibCommand, (error, stdout, stderr) => {
 });
 
 function ignoreEndpointFilterExpression(endpoints) {
-  if (endpoints === undefined) {
+  if (endpoints.length === 0) {
     return "TRUE";
   }
   const expressions = [];
@@ -86,6 +86,5 @@ function ignoreEndpointFilterExpression(endpoints) {
   }
   return expressions.join(" && ");
 }
-
 
 

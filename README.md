@@ -76,5 +76,34 @@ to produce the `./sib-swiss-federated-queries.json`, with this format.
 
 endpoints can be ignored using the `-i` argument.
 
+## One-command update workflow
+
+To update to the latest upstream examples, rebuild `all_queries.ttl`, install JS dependencies, and regenerate
+`sib-swiss-federated-queries.json`, run:
+
+```sh
+./update-and-extract.sh
+```
+
+Exclude endpoint(s) by URL:
+
+```sh
+./update-and-extract.sh --ignore-endpoint https://sparql.nextprot.org/sparql
+```
+
+or use the shortcut for neXtProt:
+
+```sh
+./update-and-extract.sh --ignore-nextprot
+```
+
+This will also track the exclusions in the metadata as:
+
+```json
+"ignored_endpoints": [
+  "https://sparql.nextprot.org/sparql"
+]
+```
+
 ## License
 The code is licensed under the MIT license. See the [LICENSE](LICENSE) file for details.
