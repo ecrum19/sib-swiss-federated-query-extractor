@@ -45,7 +45,7 @@ Options:
 Run 
 
 ```sh
-yarn node index.mjs
+yarn run extract
 ```
 
 to produce the `./sib-swiss-federated-queries.json`, with this format.
@@ -74,7 +74,17 @@ to produce the `./sib-swiss-federated-queries.json`, with this format.
 }
 ```
 
-endpoints can be ignored using the `-i` argument.
+endpoints can be ignored using the package command arguments, e.g.
+
+```sh
+yarn run extract --ignoreEndpoints https://sparql.nextprot.org/sparql
+```
+
+or using the dedicated package command:
+
+```sh
+yarn run extract:ignore:nextprot
+```
 
 ## One-command update workflow
 
@@ -85,16 +95,16 @@ To update to the latest upstream examples, rebuild `all_queries.ttl`, install JS
 ./update-and-extract.sh
 ```
 
-Exclude endpoint(s) by URL:
+Exclude endpoint(s) by URL through the package command (args are forwarded by the script):
 
 ```sh
-./update-and-extract.sh --ignore-endpoint https://sparql.nextprot.org/sparql
+./update-and-extract.sh --ignoreEndpoints https://sparql.nextprot.org/sparql
 ```
 
-or use the shortcut for neXtProt:
+or run the package shortcut directly:
 
 ```sh
-./update-and-extract.sh --ignore-nextprot
+yarn run extract:ignore:nextprot
 ```
 
 This will also track the exclusions in the metadata as:

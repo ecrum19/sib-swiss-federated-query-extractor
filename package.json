@@ -1,6 +1,10 @@
 {
   "name": "sib-swiss-federated-query-extractor",
   "packageManager": "yarn@4.5.1",
+  "scripts": {
+    "extract": "node index.mjs",
+    "extract:ignore:nextprot": "node index.mjs --ignoreEndpoints https://sparql.nextprot.org/sparql"
+  },
   "dependencies": {
     "@comunica/query-sparql-file": "^4.0.2",
     "commander": "^12.1.0"
